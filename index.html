@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workspace Browser</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="bg-layer bg-light-layer"></div>
+<div class="bg-layer bg-dark-layer"></div>
+<div class="browser-shell">
+<header class="toolbar">
+<div class="brand">Browser</div>
+<div class="nav-cluster">
+<button class="ctrl-btn" id="btn-back" title="Navigate Back">BACK</button>
+<button class="ctrl-btn" id="btn-forward" title="Navigate Forward">FWD</button>
+<button class="ctrl-btn" id="btn-refresh" title="Reload Frame">RFR</button>
+<button class="ctrl-btn" id="btn-home" title="Return Home">HOME</button>
+</div>
+<div class="search-region">
+<input type="text" id="url-input" class="address-input" placeholder="Search Google or enter destination endpoint...">
+<button id="btn-bookmark" class="meta-action-btn" title="Save to Index">BOOKMARK</button>
+<button id="btn-popout" class="meta-action-btn" title="Detach to External Tab">EXTRACT</button>
+<button class="submit-go-btn" id="btn-go">NAVIGATE</button>
+</div>
+<div class="aux-cluster">
+<button class="aux-trigger" id="btn-show-bookmarks">Bookmarks</button>
+<button class="aux-trigger" id="btn-show-history">History</button>
+<button class="aux-trigger" id="btn-show-downloads">Downloads</button>
+<button class="theme-toggle-btn" id="btn-darkmode">THEME</button>
+<button class="profile-auth-btn" id="btn-profile">ACCOUNT</button>
+</div>
+</header>
+<main class="viewport-canvas" id="main-content">
+<div class="landing-surface" id="placeholder">
+<div class="hero-block">
+<h1 class="welcome-heading" id="welcome-text">Workspace Portal</h1>
+<p class="hero-subtext">Low-latency architecture index, local persistence streams, and curated wire services.</p>
+</div>
+<div class="shortcut-grid">
+<div class="shortcut-card site-shortcut glass-panel" data-url="https://www.google.com/webhp?igu=1">
+<span class="glyph-badge">G</span>
+<span class="card-label">Google</span>
+</div>
+<div class="shortcut-card site-shortcut glass-panel" data-url="https://en.wikipedia.org/wiki/Main_Page">
+<span class="glyph-badge">W</span>
+<span class="card-label">Wikipedia</span>
+</div>
+<div class="shortcut-card site-shortcut glass-panel" data-url="https://www.openstreetmap.org/export/embed.html">
+<span class="glyph-badge">M</span>
+<span class="card-label">Maps</span>
+</div>
+</div>
+<section class="wire-stream-section">
+<div class="stream-header">
+<h3 class="stream-title">Wirefeed Index</h3>
+<div class="category-filters" id="gn-categories">
+<button class="filter-tab active" data-cat="Home">Home</button>
+<button class="filter-tab" data-cat="For You">For You</button>
+<button class="filter-tab" data-cat="Following">Following</button>
+<button class="filter-tab" data-cat="Technology">Technology</button>
+<button class="filter-tab" data-cat="Business">Business</button>
+<button class="filter-tab" data-cat="Science">Science</button>
+</div>
+</div>
+<div class="wire-feed-grid" id="news-feed"></div>
+<div id="loading-spinner" class="stream-status-indicator glass-panel">Streaming payload records...</div>
+</section>
+</div>
+<iframe id="browser-frame" class="active-frame" style="display: none;" sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-presentation allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"></iframe>
+</main>
+</div>
+<aside class="floating-media-dock glass-panel">
+<div class="dock-header" id="music-toggle">
+<span>Audio Channel</span>
+<span id="music-icon">HIDE</span>
+</div>
+<div class="dock-body" id="music-body">
+<iframe src="https://open.spotify.com/embed/playlist/37i9dQZEVXbMDoHDwVN2tF?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+</div>
+</aside>
+<div id="library-modal" class="modal-backdrop">
+<div class="modal-dialog glass-panel">
+<button class="modal-close-trigger" id="close-library">DISMISS</button>
+<div class="split-library-layout">
+<nav class="library-nav">
+<button class="lib-nav-item active" data-target="bookmarks-view" id="tab-bookmarks">Bookmarks</button>
+<button class="lib-nav-item" data-target="history-view" id="tab-history">History Logs</button>
+<button class="lib-nav-item" data-target="downloads-view" id="tab-downloads">Downloads</button>
+</nav>
+<section class="library-content-pane">
+<div id="bookmarks-view" class="library-panel">
+<div class="panel-header">
+<h3>Saved Endpoints</h3>
+<button class="action-danger-btn" id="clear-bookmarks">Purge All</button>
+</div>
+<ul id="bookmarks-list" class="data-record-list"></ul>
+</div>
+<div id="history-view" class="library-panel" style="display: none;">
+<div class="panel-header">
+<h3>Session Telemetry Log</h3>
+<button class="action-danger-btn" id="clear-history">Purge History</button>
+</div>
+<ul id="history-list" class="data-record-list"></ul>
+</div>
+<div id="downloads-view" class="library-panel" style="display: none;">
+<div class="panel-header">
+<h3>File Artifacts</h3>
+</div>
+<div class="empty-state-notice">
+<p>No active managed binaries.</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<div id="auth-modal" class="modal-backdrop">
+<div class="modal-dialog glass-panel auth-mode">
+<button class="modal-close-trigger" id="close-modal">DISMISS</button>
+<div class="auth-header">
+<h2>Credential Verification</h2>
+<p>Authenticate local workspace session context</p>
+</div>
+<form id="auth-form" class="auth-form-stack">
+<input type="text" id="auth-name" placeholder="Operator Alias" required>
+<input type="email" id="auth-email" placeholder="Primary Email" required>
+<input type="password" id="auth-password" placeholder="Passcode Hash" required>
+<button type="submit" class="submit-primary-btn">Authenticate Session</button>
+</form>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

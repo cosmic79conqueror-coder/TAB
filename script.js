@@ -16,15 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!query || !query.trim()) return;
   let finalUrl = '';
    const isUrl = /^https?:\/\//i.test(query) || /^www\./i.test(query) || /^[a-zA-Z0-9-]+\.[a-zA-Z]{2,}/.test(query);
-     if (isUrl) {
-         finalUrl = query.startsWith('http') ? query : `https://${query}`;
+      if (isUrl) {
+          finalUrl = query.startsWith('http') ? query : `https://${query}`;
        if (finalUrl.includes('google.com') && !finalUrl.includes('igu=1')) {
           finalUrl = 'https://www.google.com/search?q=&igu=1';
-     }
+      }
   } else {
         finalUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}&igu=1`;
-     }
-     currentFinalUrl = finalUrl;
+      }
+      currentFinalUrl = finalUrl;
   urlInput.value = finalUrl;
     placeholder.style.display = 'none';
   mainContent.style.padding = '0';
@@ -32,13 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
   iframe.src = finalUrl;
     checkIfBookmarked();
   if (!isHistoryNavigation) {
-       sessionHistory = sessionHistory.slice(0, sessionIndex + 1);
-       sessionHistory.push(finalUrl);
-     sessionIndex++;
-       savedHistory.unshift({ url: finalUrl, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }) });
-     if(savedHistory.length > 50) savedHistory.pop();
-       localStorage.setItem('browserHistory', JSON.stringify(savedHistory));
-     renderLibrary();
+        sessionHistory = sessionHistory.slice(0, sessionIndex + 1);
+        sessionHistory.push(finalUrl);
+      sessionIndex++;
+        savedHistory.unshift({ url: finalUrl, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }) });
+      if(savedHistory.length > 50) savedHistory.pop();
+        localStorage.setItem('browserHistory', JSON.stringify(savedHistory));
+      renderLibrary();
     }
  }
 
@@ -164,19 +164,19 @@ document.addEventListener('DOMContentLoaded', () => {
  function checkAuthStatus() {
     const storedUser = localStorage.getItem('browserUser');
   if (storedUser) {
-       btnProfile.textContent = JSON.parse(storedUser).name.toUpperCase();
-       document.getElementById('welcome-text').textContent = `Operator: ${JSON.parse(storedUser).name}`;
+        btnProfile.textContent = JSON.parse(storedUser).name.toUpperCase();
+        document.getElementById('welcome-text').textContent = `Operator: ${JSON.parse(storedUser).name}`;
     } else {
-       btnProfile.textContent = 'ACCOUNT';
-       document.getElementById('welcome-text').textContent = 'Workspace Portal';
+        btnProfile.textContent = 'ACCOUNT';
+        document.getElementById('welcome-text').textContent = 'Workspace Portal';
     }
  }
 
  btnProfile.addEventListener('click', () => {
     if (localStorage.getItem('browserUser')) {
-       if(confirm("Terminate session?")) { localStorage.removeItem('browserUser'); checkAuthStatus(); }
+        if(confirm("Terminate session?")) { localStorage.removeItem('browserUser'); checkAuthStatus(); }
     } else {
-       authModal.style.display = 'flex';
+        authModal.style.display = 'flex';
     }
  });
 
@@ -184,8 +184,8 @@ document.addEventListener('DOMContentLoaded', () => {
  document.getElementById('auth-form').addEventListener('submit', (e) => {
     e.preventDefault();
   localStorage.setItem('browserUser', JSON.stringify({
-       name: document.getElementById('auth-name').value,
-       email: document.getElementById('auth-email').value
+        name: document.getElementById('auth-name').value,
+        email: document.getElementById('auth-email').value
   }));
     authModal.style.display = 'none';
   document.getElementById('auth-form').reset();
@@ -197,14 +197,14 @@ document.addEventListener('DOMContentLoaded', () => {
  const loadingSpinner = document.getElementById('loading-spinner');
 
  const googleNewsDatabase = [
-    { title: "NVIDIA announces next-generation chip architecture with doubled optical interface throughput", source: "The Verge", time: "18 mins ago", url: "https://en.wikipedia.org/wiki/Nvidia", img: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=500&q=80", category: "Technology" },
-    { title: "Global central banks signal unified approach on liquidity calibration heading into Q4", source: "Financial Times", time: "42 mins ago", url: "https://en.wikipedia.org/wiki/Central_bank", img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=500&q=80", category: "Business" },
-    { title: "Deep-ocean hydrothermal vent mapping reveals unknown microbial colony subsets", source: "Nature", time: "1 hr ago", url: "https://en.wikipedia.org/wiki/Hydrothermal_vent", img: "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=500&q=80", category: "Science" },
-    { title: "Open-weights model benchmarking suite standardizes evaluation across edge hardware", source: "Ars Technica", time: "2 hrs ago", url: "https://en.wikipedia.org/wiki/Artificial_intelligence", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&q=80", category: "Technology" },
-    { title: "European logistics corridors implement automated corridor priority rules", source: "Reuters", time: "3 hrs ago", url: "https://en.wikipedia.org/wiki/Supply_chain", img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&q=80", category: "Business" },
-    { title: "Quantum error correction milestone verified via multi-qubit entanglement test", source: "IEEE Spectrum", time: "4 hrs ago", url: "https://en.wikipedia.org/wiki/Quantum_computing", img: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&q=80", category: "Science" },
-    { title: "Major enterprise cloud provider rolls out zero-trust kernel attestation policy", source: "ZDNet", time: "5 hrs ago", url: "https://en.wikipedia.org/wiki/Zero_trust_security_model", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500&q=80", category: "Technology" },
-    { title: "Semiconductor supply fabrication output stabilizes across eastern manufacturing hubs", source: "Bloomberg", time: "6 hrs ago", url: "https://en.wikipedia.org/wiki/Semiconductor_fabrication_plant", img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&q=80", category: "Business" }
+    { title: "NVIDIA announces next-generation chip architecture with doubled optical interface throughput", source: "The Verge", time: "18 mins ago", url: "https://news.google.com/search?q=NVIDIA+next-generation+chip+architecture&igu=1", category: "Technology" },
+    { title: "Global central banks signal unified approach on liquidity calibration heading into Q4", source: "Financial Times", time: "42 mins ago", url: "https://news.google.com/search?q=central+banks+liquidity+calibration&igu=1", category: "Business" },
+    { title: "Deep-ocean hydrothermal vent mapping reveals unknown microbial colony subsets", source: "Nature", time: "1 hr ago", url: "https://news.google.com/search?q=hydrothermal+vent+microbial+colony&igu=1", category: "Science" },
+    { title: "Open-weights model benchmarking suite standardizes evaluation across edge hardware", source: "Ars Technica", time: "2 hrs ago", url: "https://news.google.com/search?q=open+weights+model+benchmarking&igu=1", category: "Technology" },
+    { title: "European logistics corridors implement automated corridor priority rules", source: "Reuters", time: "3 hrs ago", url: "https://news.google.com/search?q=european+logistics+corridors&igu=1", category: "Business" },
+    { title: "Quantum error correction milestone verified via multi-qubit entanglement test", source: "IEEE Spectrum", time: "4 hrs ago", url: "https://news.google.com/search?q=quantum+error+correction+milestone&igu=1", category: "Science" },
+    { title: "Major enterprise cloud provider rolls out zero-trust kernel attestation policy", source: "ZDNet", time: "5 hrs ago", url: "https://news.google.com/search?q=zero+trust+kernel+attestation&igu=1", category: "Technology" },
+    { title: "Semiconductor supply fabrication output stabilizes across eastern manufacturing hubs", source: "Bloomberg", time: "6 hrs ago", url: "https://news.google.com/search?q=semiconductor+fabrication+output&igu=1", category: "Business" }
  ];
 
  let currentCategory = 'Home';
@@ -221,12 +221,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
  function getDynamicSyntheticItem(index, baseList) {
     const template = googleNewsDatabase[index % googleNewsDatabase.length];
+    const dynamicQuery = encodeURIComponent(template.title.split(' ')[0] + ' news');
     return {
       title: `${template.title} [Wire Stream Update #${index + 1}]`,
       source: template.source,
       time: `${Math.floor((index + 2) * 1.5)} hrs ago`,
-      url: template.url,
-      img: template.img,
+      url: `https://news.google.com/search?q=${dynamicQuery}&igu=1`,
       category: template.category
     };
  }
@@ -237,38 +237,41 @@ document.addEventListener('DOMContentLoaded', () => {
     loadingSpinner.style.display = 'block';
 
   setTimeout(() => {
-       const activeList = filterStories();
-       const fragment = document.createDocumentFragment();
-       for (let i = 0; i < batchSize; i++) {
-          const itemIndex = pageCursor * batchSize + i;
-          const data = itemIndex < activeList.length
-             ? activeList[itemIndex]
-             : getDynamicSyntheticItem(itemIndex, activeList);
+        const activeList = filterStories();
+        const fragment = document.createDocumentFragment();
+        for (let i = 0; i < batchSize; i++) {
+           const itemIndex = pageCursor * batchSize + i;
+           const data = itemIndex < activeList.length
+               ? activeList[itemIndex]
+               : getDynamicSyntheticItem(itemIndex, activeList);
 
-          const card = document.createElement('a');
-          card.className = 'news-feed-card';
-          card.href = '#';
-          card.addEventListener('click', (e) => {
-             e.preventDefault();
-             navigate(data.url);
-          });
-          card.innerHTML = `
-             <img src="${data.img}" alt="" class="news-thumbnail">
-             <div class="news-content">
-                <div class="news-source-row">
-                   <span class="news-source">${data.source}</span>
-                   <span class="news-time">${data.time}</span>
-                </div>
-                <h4 class="news-title">${data.title}</h4>
-             </div>
-          `;
-          fragment.appendChild(card);
-       }
-       newsFeed.appendChild(fragment);
-       pageCursor++;
-       isLoading = false;
-       loadingSpinner.style.display = 'none';
-       loadingSpinner.textContent = "Streaming payload records...";
+           const card = document.createElement('a');
+           card.className = 'news-feed-card';
+           card.href = '#';
+           card.addEventListener('click', (e) => {
+               e.preventDefault();
+               navigate(data.url);
+           });
+           card.innerHTML = `
+               <div class="news-content">
+                  <div class="news-source-row">
+                     <span class="news-source">${data.source}</span>
+                     <span class="news-time">${data.time}</span>
+                  </div>
+                  <h4 class="news-title">${data.title}</h4>
+               </div>
+               <span class="news-indicator-badge">STREAM // OPEN</span>
+           `;
+           fragment.appendChild(card);
+        }
+        newsFeed.appendChild(fragment);
+        pageCursor++;
+        isLoading = false;
+        loadingSpinner.style.display = 'none';
+        loadingSpinner.textContent = "Streaming payload records...";
+
+        // If content height still hasn't filled the scroll viewport, pull next batch automatically
+        checkScrollPosition();
   }, 280);
  }
 
@@ -283,19 +286,26 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
       e.currentTarget.classList.add('active');
       currentCategory = e.currentTarget.dataset.cat;
+      if (currentCategory !== 'Home' && currentCategory !== 'For You' && currentCategory !== 'Following') {
+        iframe.src = `https://news.google.com/search?q=${encodeURIComponent(currentCategory)}&igu=1`;
+      }
       resetAndLoadFeed();
     });
  });
 
- appendNewsBatch();
-
- mainContent.addEventListener('scroll', () => {
+ function checkScrollPosition() {
     if (placeholder.style.display !== 'none' && !isLoading) {
-       if (mainContent.scrollTop + mainContent.clientHeight >= mainContent.scrollHeight - 200) {
+       // If scrollHeight is close to or smaller than clientHeight, or we are near bottom (300px threshold)
+       if (mainContent.scrollHeight <= mainContent.clientHeight + mainContent.scrollTop + 300) {
           appendNewsBatch();
        }
     }
- });
+ }
+
+ mainContent.addEventListener('scroll', checkScrollPosition);
+
+ // Initial kick-off load
+ appendNewsBatch();
 
  const musicToggle = document.getElementById('music-toggle');
  const musicBody = document.getElementById('music-body');

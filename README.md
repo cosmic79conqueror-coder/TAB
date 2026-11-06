@@ -1,17 +1,22 @@
-# simple browser project
+# Neural Workspace Browser (Cyber Edition)
 
-hey this is a simple web browser i made using just html css and javascript . 
-it actually works and u can search things on google using the search bar.
+A high-tech, browser-in-a-browser workspace built with vanilla web technologies. It features a stunning animated cyber-glass aesthetic, local data persistence, and a live global news feed.
 
-some things it has:
-* dark mode that changes the background image to night time
-* working history and bookmarks that saves to your localstorage
-* a record player in the bottom right corner. it plays spotify and the record actually spins when u open it
-* discover news feed that loads more articles when u scroll down
+## ✨ Features
 
-### how to use it
-just put all 3 files in the same folder and open index.html in chrome. u dont need to install anything else like node or whatever.
+* **Cyber-Glass UI:** An animated, multi-color gradient background with a high-tech grid overlay, frosted glass panels, and interactive neon accents (Cyan & Pink).
+* **Live Global News Feed:** Fetches real-time news from Google News RSS feeds using the `rss2json` API. Links open securely in a new tab to bypass iframe reCAPTCHA blocks.
+* **Local Persistence Engine:** Utilizes `localStorage` to save user bookmarks, session telemetry (history), and operator authentication details directly in the browser.
+* **Iframe Sandbox Navigation:** Built-in web navigation defaulting to DuckDuckGo (to ensure smooth iframe rendering without strict X-Frame-Options blocking).
+* **Floating Media Dock:** An integrated, collapsible Spotify widget for uninterrupted audio playback during deep work sessions.
+* **System Auth Modal:** A personalized authentication layer to decrypt the local workspace session.
 
-note: some websites block iframes so they wont load inside the browser window. i added a pop out button (the arrow next to the star) so u can open those links in a real tab if they get blocked.
+## 🛠️ Tech Stack
 
-it was fun to make . let me know if there are bugs.
+* **HTML5:** Semantic structure and advanced iframe sandboxing.
+* **CSS3:** CSS variables, `@keyframes` animations, backdrop-filters (glassmorphism), and custom scrollbars.
+* **Vanilla JavaScript:** DOM manipulation, local storage management, array mapping, and asynchronous API data fetching (`async/await`).
+
+## 🚀 Getting Started
+
+No build tools, package managers, or backend required. This project runs entirely in the browser.
